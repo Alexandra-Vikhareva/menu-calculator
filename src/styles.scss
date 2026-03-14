@@ -1,1 +1,15 @@
-@import './normalize'
+@import './normalize';
+
+
+:root {
+    --background-color-primary: #FFFFFF;
+    --text-color: #000000;
+    --background-color-secondary: #F5F7F8;
+    --accent-color: #092433;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--text-color);
+    font-family: Manrope, Roboto, sans-serif;
+}
