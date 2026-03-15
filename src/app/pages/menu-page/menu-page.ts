@@ -1,28 +1,43 @@
 import { Component, computed, signal } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
 import { menuItem } from '../../data/interfaces/menu-item.interface';
+import { MENU_SETS } from '../../data/menu-sets-data'
+import { Sidebar } from '../../common-components/sidebar/sidebar';
 
 @Component({
   selector: 'app-menu-page',
-  imports: [],
+  imports: [Sidebar, DecimalPipe],
   templateUrl: './menu-page.html',
   styleUrl: './menu-page.scss',
 })
 
 export class MenuPage {
 
-  menuItems = signal<menuItem[]>(
-  [{ "id": 1, "name": "Пицца Маргарита", "value": 450 , isChecked: false},
-  { "id": 2, "name": "Паста Карбонара", "value": 380, isChecked: false },
-  { "id": 3, "name": "Цезарь с курицей", "value": 320, isChecked: false }]);
+  menuSets = signal(MENU_SETS)
 
-  selectedCount = computed(() => this.menuItems().filter(item => item.isChecked).length)
+  selectedMenuId = signal<number>(1);
 
-  totalValue = computed(() => this.menuItems().filter(item => item.isChecked).reduce((val, item) => val + item.value, 0))
+  currentMenu = computed(() => 
+    this.menuSets().find(m => m.id === this.selectedMenuId())
+  );
+
+  currentItems = computed(() => this.currentMenu()?.items ?? []);
+
+  currentName = computed(() => this.currentMenu()?.name ?? '');
+
+  selectedCount = computed(() => this.currentItems().filter(item => item.isChecked).length)
+
+  totalValue = computed(() => this.currentItems().filter(item => item.isChecked).reduce((val, item) => val + item.value, 0))
 
   onCheckboxChange(item: menuItem, event: Event) {
     const checked = (event.target as HTMLInputElement).checked;
-    this.menuItems.update(items =>
-      items.map(i => i.id === item.id ? { ...i, isChecked: checked } : i)
+    this.menuSets.update(menus =>
+      menus.map(menu => {
+        if (menu.id !== this.selectedMenuId()) return menu;
+        return {...menu, items: menu.items.map(i => 
+                  i.id === item.id ? { ...i, isChecked: checked } : i
+        )};
+      })
     );
   }
 }

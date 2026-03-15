@@ -1,0 +1,37 @@
+:host {
+    min-width: 200px;
+    border-right: 1px solid var(--background-color-secondary);
+}
+
+.sidebar__title {
+  font-size: 30px;
+  color: var(--accent-color);
+  padding: 0 20px 15px;
+  margin: 0;
+  border-bottom: 2px solid var(--background-color-secondary);
+}
+
+.sidebar__list {
+    list-style: none;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0;
+}
+
+.sidebar__button {
+    width: 100%;
+    border: none;
+    background-color: var(--background-color-primary);
+    padding: 10px;
+}
+
+.sidebar__button:hover {
+    font-size: 18px;
+    transition: 0.5s;
+}
+
+.sidebar__button--active {
+    background-color: var(--accent-color);
+    color: var(--background-color-primary);
+    font-size: 18px;
+}

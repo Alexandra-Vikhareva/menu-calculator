@@ -1,0 +1,14 @@
+<aside class="sidebar">
+      <h1 class="sidebar__title">Меню</h1>
+      <ul class="sidebar__list">
+        @for (menu of menus; track menu.id) {
+          <li class="sidebar__item">
+            <button class="sidebar__button" 
+                    [class.sidebar__button--active]="menu.id === selectedId"
+                    (click)="selectMenu(menu.id)">
+              {{ menu.name }}
+            </button>
+          </li>
+        }
+      </ul>
+</aside>
