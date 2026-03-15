@@ -35,3 +35,15 @@
     color: var(--background-color-primary);
     font-size: 18px;
 }
+
+.sidebar__button.back {
+    display: inline-flex;
+    text-decoration: none;
+    color: var(--text-color);
+    width: 100%;
+    align-items: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
