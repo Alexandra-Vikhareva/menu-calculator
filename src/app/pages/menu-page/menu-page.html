@@ -1,0 +1,25 @@
+<div class="menu-page">
+    <div class="menu-page__header">
+        <p class="menu-page__stats">
+            Выбрано позиций: <strong>{{ selectedCount() }}</strong><br>
+            Общая сумма: <strong>{{ totalValue() }} ₽</strong>
+        </p>
+    </div>
+    
+    <ul class="menu-page__list">
+        @for (item of menuItems(); track item.id) {
+            <li class="menu-item">
+                <label class="menu-item__label">
+                    <input class="menu-item__checkbox"
+                            type="checkbox"
+                            [checked]="item.isChecked"
+                            (change)="onCheckboxChange(item, $event)">
+                    <div class="menu-item__info">
+                        <span class="menu-item__item-name">{{ item.name }}</span>
+                        <span class="menu-item__item-value">{{ item.value }} ₽</span>
+                    </div>
+                </label>
+            </li>
+        }
+    </ul>
+</div>
