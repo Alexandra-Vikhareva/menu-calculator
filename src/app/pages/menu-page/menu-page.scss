@@ -68,3 +68,25 @@
     padding: 6px 12px;
     border-radius: 20px;
 }
+
+@media (max-width: 768px) {
+    .menu-page {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .menu-item:hover {
+    box-shadow: none;
+    }
+
+    .menu-item__info {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .menu-item__item-value {
+        display: block;
+        text-align: center;
+    }
+}
