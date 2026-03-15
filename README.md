@@ -1,59 +1,52 @@
 # MenuCalculator
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.2.
+Это тестовое приложение, разработанное на Angular 19+. Оно состоит из двух независимых страниц: **Глвная страница** и **Меню**. На каждой вкладке меню есть сайдбар с категориями, список элементов с чекбоксами и числовыми значениями (вес / количество страниц / время), а также заголовок с количеством выбранных элементов и их суммой. Данные статичны, бэкенд не требуется.
 
-## Development server
+## Внешний вид приложения (макет в Figma)
 
-To start a local development server, run:
+### Главная страница
+![Макет](/public/screenshots/figma-design-home.png)
 
-```bash
-ng serve
-```
+### Страница меню
+![Макет](/public/screenshots/figma-design-menu.png)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+*Прототип интерфейса, созданный в Figma*
 
-## Code scaffolding
+## Функциональность
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Главная страница** – приветствие и ссылки на разделы.
+- **Прочитанные книги** – У каждой книги есть количество страниц. Отмечая прочитанные, вы видите число выбранных книг и общее количество страниц.
+- **Список дел** – У каждого дела есть время (в ч), которое нужно затратить для выполнения задач. Отмечая запланированные, вы видите количество запланированных дел и общее время (в ч), которое необходимо затратить.
+- **Туристическое наряжение** – Каждый предмет имеет вес (в кг). Отмечая предметы, вы видите общее количество упакованных предметов и их суммарный вес (в кг).
+- Сайдбар с переключением между списками – активная категория выделяется визуально.
+- Все данные хранятся локально в виде статических JSON-массивов.
 
-```bash
-ng generate component component-name
-```
+## Технологии
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Angular 19+
+- TypeScript
+- Signals для реактивного состояния
+- SCSS
+- Angular Router для навигации
+- GitHub Pages для хостинга
 
-```bash
-ng generate --help
-```
+## Установка и запуск
 
-## Building
+1. Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com//Alexandra-Vikhareva/menu-calculator.git
+   cd имя-репозитория
 
-To build the project run:
+2. Установите зависимости:
+    ```bash
+    npm install
 
-```bash
-ng build
-```
+3. Запустите приложение в режиме разработки:
+    ```bash
+    ng serve
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+4. Откройте http://localhost:4200.
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+5. Сборка для продакшена:
+    ```bash
+    ng build --configuration production --base-href=/имя-репозитория/
